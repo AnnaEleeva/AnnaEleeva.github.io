@@ -210,6 +210,13 @@
         size: '30',
         color: '#254364'
     });
+    var restart=game.newTextObject({
+        text:'Restart',
+        positionC:p(width/2, heigth/3),
+        font: 'myFont',
+        size: '30',
+        color: '#FFFFFF'
+    });
     game.newLoop('GameOver',function(){
         game.clear();
         drawBG();
@@ -224,6 +231,10 @@
             align: 'center'
         });
         pushVK.draw();
+        restart.draw();
+        if (mouse.isPeekObject('LEFT', restart)){
+            game.setLoop('game');
+        }
         if (mouse.isPeekObject('LEFT', pushVK)){
             VK.api('wall.post', {
                 'message': 'MyScore: ' + score,
