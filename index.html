@@ -115,7 +115,7 @@
         };
     };
     var Game=function(){
-        var blocks=[],oldBlock;
+        var blocks=[],oldBlock=false;
         var space=100;
         var addBlock=function(y){
             var dX=oldBlock?oldBlock.top.x+pjs.math.random(200,900):width;
@@ -145,10 +145,7 @@
             oldBlock=obj;
             blocks.push(obj);
         };
-        OOP.forInt(5, function(){
-            //addBlock(heigth/2);
-            addBlock(pjs.math.random(space*2,heigth-space*2));
-        });
+
         var drawBlocks=function(){
             OOP.forArr(blocks, function(el){
                 el.top.draw();
@@ -161,14 +158,15 @@
                     score+=1;
                 }
                 if(el.top.isInCamera()){
-                    if(el.top.isIntersect(bird)){
+                    if(el.top.isIntersect(bird)||el.bottom.isIntersect(bird)){
                         gameOver();
                     }
                 }
-                if(el.bottom.isInCamera()){
-                    if(el.bottom.isIntersect(bird)){
-                        gameOver();
-                    }
+                if(bird.y<0){
+                    gameOver();
+                }
+                if(bird.y+bird.h>heigth){
+                    gameOver();
                 }
             });
         };
@@ -197,10 +195,16 @@
             });
         };
         this.entry=function () {
+            bird.dy=0;
+             blocks=[],oldBlock=false;
+            OOP.forInt(5, function(){
+                //addBlock(heigth/2);
+                addBlock(pjs.math.random(space*2,heigth-space*2));
+            });
             bird.setPositionC(p(width/2, heigth/2));
             score=0;
-            var snd = pjs.wAudio.newAudio("1.mp3", 0.3);
-        game.setLoopSound('game', [snd]);
+            var snd = pjs.wAudio.newAudio("snd/1.mp3", 0.3);
+            game.setLoopSound('game', [snd]);
         };
     };
     game.newLoopFromClassObject('menu', new Menu());
