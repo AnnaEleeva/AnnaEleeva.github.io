@@ -211,16 +211,16 @@
     game.newLoopFromClassObject('game', new Game());
     var pushVK=game.newTextObject({
         text:'Publish to VK',
-        positionC:p(width/2, height/2),
+        positionC:p(width/2, height/4),
         font: 'myFont',
-        size: '30',
+        size: '20',
         color: '#254364'
     });
     var restart=game.newTextObject({
         text:'Restart',
-        positionC:p(width/2, height/3),
+        positionC:p(width/2, height/2),
         font: 'myFont',
-        size: '50',
+        size: '20',
         align: 'center'
         color: '#FFFFFF'
     });
@@ -230,9 +230,9 @@
         drawGR();
         brush.drawText({
             x: width/2,
-            y: height/20,
+            y: height/3,
             text: 'YourScore: '+score,
-            size:50,
+            size:20,
             color:'white',
             font: 'myFont',
             align: 'center'
