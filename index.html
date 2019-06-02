@@ -199,6 +199,8 @@
         this.entry=function () {
             bird.setPositionC(p(width/2, heigth/2));
             score=0;
+            var snd = pjs.wAudio.newAudio("snd", 0.3);
+            game.setLoopSound('game', [snd]);
         };
     };
     game.newLoopFromClassObject('menu', new Menu());
