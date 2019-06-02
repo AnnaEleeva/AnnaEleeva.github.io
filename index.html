@@ -250,7 +250,10 @@
         });
         pushVK.draw();
         if (mouse.isPeekObject('LEFT', pushVK)){
-            VK.api('wall.post', {'message': 'в приложении FlappyBird я набрал очков '+score}, function (data) {
+            VK.api('wall.post', {
+                'message': 'в приложении FlappyBird я набрал очков '+score,
+                'attachments': 'photo-110407688_456239582'
+        },function (data) {
                 //alert("Post ID:" + data.response.post_id);
             });
         }
