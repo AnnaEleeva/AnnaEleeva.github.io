@@ -58,7 +58,7 @@
         });
     };
     var gr=[], oldG;
-    OOP.forInt(100, function (i) {
+    OOP.forInt(200, function (i) {
         oldG=game.newImageObject({
             file:'gr.png',
             w: width/5,
@@ -195,6 +195,8 @@
             });
         };
         this.entry=function () {
+            var snd = pjs.wAudio.newAudio("snd/1.mp3", 0.3);
+            game.setLoopSound('game', [snd]);
             bird.dy=0;
              blocks=[],oldBlock=false;
             OOP.forInt(100, function(){
@@ -203,8 +205,7 @@
             });
             bird.setPositionC(p(width/2, heigth/2));
             score=0;
-            var snd = pjs.wAudio.newAudio("snd/1.mp3", 0.3);
-            game.setLoopSound('game', [snd]);
+            
         };
     };
     game.newLoopFromClassObject('menu', new Menu());
