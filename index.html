@@ -229,10 +229,17 @@
     game.newLoopFromClassObject('game', new Game());
     var pushVK=game.newTextObject({
         text:'Publish to VK',
-        positionC:p(width/2, heigth/2),
+        positionC:p(width/2, height/2),
         font: 'myFont',
         size: '30',
         color: '#254364'
+    });
+    var restart=game.newTextObject({
+        text:'Publish to VK',
+        positionC:p(width/2, height/3),
+        font: 'myFont',
+        size: '30',
+        color: 'white'
     });
     game.newLoop('GameOver',function(){
         game.clear();
@@ -249,6 +256,10 @@
 
         });
         pushVK.draw();
+        restart.draw();
+        if (mouse.isPeekObject('LEFT', restart)){
+            game.setLoop('game');
+        }
         if (mouse.isPeekObject('LEFT', pushVK)){
             VK.api('wall.post', {
                 'message': 'в приложении FlappyBird я набрал очков '+score,
@@ -257,7 +268,7 @@
                 //alert("Post ID:" + data.response.post_id);
             });
         }
-    })
+    });
     game.startLoop('menu');
 </script>
 </body>
