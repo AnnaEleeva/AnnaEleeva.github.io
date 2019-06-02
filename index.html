@@ -14,8 +14,19 @@
 
 </head>
 <body>
+<script src="https://vk.com/js/api/xd_connection.js?2"  type="text/javascript"></script>
 <script type="text/javascript" src="point.js"></script>
 <script type="text/javascript">
+    var vk_inited=false;
+
+    VK.init(function() {
+        vk_inited=true;
+        // API initialization succeeded
+        // Your code here
+    }, function() {
+        // API initialization failed
+        // Can reload page here
+    }, '5.95');
 
     var width=640, heigth=480;
     var pjs=new PointJS('2D',width,heigth);
@@ -239,7 +250,9 @@
         });
         pushVK.draw();
         if (mouse.isPeekObject('LEFT', pushVK)){
-            log(1);
+            VK.api('wall.post', {'message': 'в приложении FlappyBird я набрал очков '+score}, function (data) {
+                //alert("Post ID:" + data.response.post_id);
+            });
         }
     })
     game.startLoop('menu');
