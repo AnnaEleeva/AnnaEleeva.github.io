@@ -102,7 +102,7 @@
             drawGR();
             brush.drawText({
                 x: width/2,
-                y: heigth/3,
+                y: height/3,
                 text: 'FlappyBird',
                 size:50,
                 color:'white',
@@ -165,7 +165,7 @@
                 if(bird.y<0){
                     gameOver();
                 }
-                if(bird.y+bird.h>heigth){
+                if(bird.y+bird.h>height){
                     gameOver();
                 }
             });
@@ -186,7 +186,7 @@
             drawGR();
             brush.drawText({
                 x: width/2,
-                y: heigth/20,
+                y: height/20,
                 text: score,
                 size:50,
                 color:'white',
@@ -195,17 +195,16 @@
             });
         };
         this.entry=function () {
-            var snd = pjs.wAudio.newAudio("snd/1.mp3", 0.3);
-            game.setLoopSound('game', [snd]);
             bird.dy=0;
              blocks=[],oldBlock=false;
             OOP.forInt(100, function(){
-                //addBlock(heigth/2);
-                addBlock(pjs.math.random(space*2,heigth-space*2));
+                //addBlock(height/2);
+                addBlock(pjs.math.random(space*2,height-space*2));
             });
-            bird.setPositionC(p(width/2, heigth/2));
+            bird.setPositionC(p(width/2, height/2));
             score=0;
-            
+            var snd = pjs.wAudio.newAudio("snd/1.mp3", 0.3);
+            game.setLoopSound('game', [snd]);
         };
     };
     game.newLoopFromClassObject('menu', new Menu());
