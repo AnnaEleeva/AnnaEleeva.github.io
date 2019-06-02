@@ -211,16 +211,16 @@
     game.newLoopFromClassObject('game', new Game());
     var pushVK=game.newTextObject({
         text:'Publish to VK',
-        positionC:p(width/2, height/2),
+        positionC:p(width, height/2),
         font: 'myFont',
         size: '20',
         color: '#254364'
     });
     var restart=game.newTextObject({
         text:'Restart',
-        positionC:p(width/2, height/3),
+        positionC:p(-width, height/3),
         font: 'myFont',
-        size: '30',
+        size: '20',
         color: '#FFFFFF'
     });
     game.newLoop('GameOver',function(){
