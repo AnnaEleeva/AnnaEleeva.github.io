@@ -26,7 +26,7 @@
     }, '5.95');
 
     var width=640, height=480;
-    var pjs=new PointJS('2D',width,heigth);
+    var pjs=new PointJS('2D',width,height);
     pjs.system.initFullScale();
     var log=pjs.system.log;
     var game=pjs.game;
@@ -40,7 +40,7 @@
     OOP.forInt(100, function (i) {
         oldB=game.newImageObject({
             file:'bg.png',
-            h: heigth,
+            h: height,
             onload: function(){
                 this.x=i*this.w;
             }
@@ -64,7 +64,7 @@
             w: width/5,
             onload: function(){
                 this.x=i*this.w;
-                this.y=-this.h+heigth;
+                this.y=-this.h+height;
             }
         });
         bg.push(oldG);
@@ -81,7 +81,7 @@
     };
     var bird=game.newAnimationObject({
         w: 34, h: 24,
-        positionC: p(width/2, heigth/2),
+        positionC: p(width/2, height/2),
         //x:50, y:50,
         scale: 1.5,
         animation: pjs.tiles.newAnimation('bird.png', 598, 402, 4),
